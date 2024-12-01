@@ -76,7 +76,7 @@
           await audioStore.convertAudioToText(blob)
         }
       } catch (e) {
-        console.error('Error converting audio to text:', e)
+        console.error('Error converting audio to  text:', e)
       }
     }
     stopRecording().then(() => convertToText())
