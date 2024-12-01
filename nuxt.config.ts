@@ -4,7 +4,8 @@ export default defineNuxtConfig({
   srcDir: 'app',
   compatibilityDate: '2024-11-01',
   devtools: { enabled: false },
-  modules: ['@nuxtjs/tailwindcss', '@nuxt/image'],
+  modules: ['@nuxtjs/tailwindcss', '@nuxt/image', '@pinia/nuxt'],
+  pinia: {},
   imports: {
     autoImport: false,
   },
@@ -29,7 +30,6 @@ export default defineNuxtConfig({
     buildAssetsDir: '/_nuxt/',
   },
   runtimeConfig: {
-    OPENAI_API_KEY:
-      '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',
+    ASSEMBLYAI_API_KEY: '4197449bcd0e48b8949dfcc5fed44ff0',
   },
 })

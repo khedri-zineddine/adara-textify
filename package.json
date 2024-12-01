@@ -14,11 +14,14 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.8.1",
-    "assemblyai": "^4.8.0",
+    "@pinia/nuxt": "^0.8.0",
     "nuxt": "^3.14.1592",
-    "openai": "^4.73.1",
+    "pinia": "^2.2.8",
     "vue": "latest",
     "vue-router": "latest"
+  },
+  "overrides": {
+    "vue": "latest"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config-typescript": "^12.1.0",

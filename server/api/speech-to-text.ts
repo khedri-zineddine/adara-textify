@@ -1,49 +1,26 @@
 import {
   defineEventHandler,
   readMultipartFormData,
-  useRuntimeConfig,
+  setResponseStatus,
 } from '#imports'
-import { AssemblyAI } from 'assemblyai'
-import fs from 'fs'
-import path from 'path'
-import { promisify } from 'util'
-
-const writeFile = promisify(fs.writeFile)
-const unlinkFile = promisify(fs.unlink)
+import convertAudioToText from '../utils/convertAudioToText'
 
 export default defineEventHandler(async (event) => {
   try {
-    const { OPENAI_API_KEY } = useRuntimeConfig(event)
-    console.log(OPENAI_API_KEY)
     const formData = await readMultipartFormData(event)
     if (!formData) {
       throw new Error('No form data received')
     }
 
-    const audioFile = formData.find((file) => file.name === 'audio')
-    if (!audioFile || !audioFile.data) {
-      throw new Error('No audio file found')
-    }
-    const tempFilePath = path.join('/tmp', 'audio.wav')
+    const audioBlob = formData.find((file) => file.name === 'audio')
+    if (!audioBlob || !audioBlob.data) throw new Error('No audio data received')
 
-    // Write the blob data to a temporary file
-    await writeFile(tempFilePath, audioFile.data)
-    const client = new AssemblyAI({
-      apiKey: '4197449bcd0e48b8949dfcc5fed44ff0',
-    })
-    const data = {
-      audio: tempFilePath,
-    }
-    const transcript = await client.transcripts.transcribe(data)
-    console.log(transcript.text)
-    console.log('Transcription:', transcript)
-    await unlinkFile(tempFilePath)
+    const text = await convertAudioToText(audioBlob.data, event)
     return {
-      text: 'Audio received successfully',
-      size: audioFile.data.length,
+      transcriptedText: text,
     }
   } catch (e) {
-    console.error('Error processing audio:', e)
+    setResponseStatus(event, 500)
     return {
       error: e instanceof Error ? e.message : 'Unknown error occurred',
     }
