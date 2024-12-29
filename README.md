@@ -1,75 +1,45 @@
-# Nuxt Minimal Starter
+# 🎙️ Nuxt Voice Recorder
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Simple voice recorder & speech-to-text converter built with Nuxt.js.
 
-## Setup
+## ✨ Features
 
-Make sure to install dependencies:
+- 🎤 Voice recording
+- 💾 Download recordings
+- 🎨 Clean UI with Tailwind CSS
+
+## 🚀 Quick Start
 
 ```bash
-# npm
+# Install dependencies
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Start dev server
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## 🛠️ Tech Stack
 
-Build the application for production:
+- Nuxt.js 3
+- Web Speech API
+- MediaRecorder API
+- Tailwind CSS
 
-```bash
-# npm
-npm run build
+## 📝 Usage
 
-# pnpm
-pnpm build
+1. Click mic to start recording
+2. Speak into your microphone
+3. Click stop when done
+4. Copy text
 
-# yarn
-yarn build
+## 📋 Requirements
 
-# bun
-bun run build
-```
+- Node.js v16+
 
-Locally preview production build:
+## 🤝 Contributing
 
-```bash
-# npm
-npm run preview
+PRs are welcome! Fork, create a feature branch, and submit your PR.
 
-# pnpm
-pnpm preview
+## 📜 License
 
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+MIT
